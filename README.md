@@ -28,9 +28,9 @@ An earlier internal run on 2026-04-03 recorded `accuracy = 0.9210` using an in-p
 # (Ubuntu/Debian: sudo apt install python3 python3-venv make git)
 git clone https://github.com/snptx1/snptx-repro-chembl.git
 cd snptx-repro-chembl
-make install         # create .venv, install requirements
+make install         # create .venv, install requirements (~3 min, ~1 GB)
 make repro-chembl    # ≈ 15s on CPU; no GPU required
-make ui              # open MLflow UI on http://localhost:5000
+cat results/metrics/drug_discovery_result.json   # expect accuracy = 0.9797225186766275
 ```
 
 The script pins seed 42 and writes a result summary to `results/metrics/drug_discovery_result.json`.
