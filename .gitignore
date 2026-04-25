@@ -1,0 +1,28 @@
+# Generated artifacts
+results/
+mlruns/
+*.pt
+*.npy
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environments
+.venv/
+venv/
+env/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+
+# Build
+*.egg-info/
+build/
+dist/
