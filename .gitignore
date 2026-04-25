@@ -26,3 +26,4 @@ env/
 *.egg-info/
 build/
 dist/
+snptx-repro-chembl/
