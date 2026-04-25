@@ -24,6 +24,8 @@ An earlier internal run on 2026-04-03 recorded `accuracy = 0.9210` using an in-p
 ## Reproduce in 5 minutes
 
 ```bash
+# prerequisites: python3.11+, pip, make, git
+# (Ubuntu/Debian: sudo apt install python3 python3-venv make git)
 git clone https://github.com/snptx1/snptx-repro-chembl.git
 cd snptx-repro-chembl
 make install         # create .venv, install requirements
