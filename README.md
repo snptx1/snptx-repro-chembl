@@ -28,7 +28,7 @@ An earlier internal run on 2026-04-03 recorded `accuracy = 0.9210` using an in-p
 # (Ubuntu/Debian: sudo apt install python3 python3-venv make git)
 git clone https://github.com/snptx1/snptx-repro-chembl.git
 cd snptx-repro-chembl
-make install         # create .venv, install CPU-only deps (~1 min, ~200 MB)
+make install         # create .venv, install CPU-only deps (~1 min, ~200 MB download)
 make repro-chembl    # ≈ 15s on CPU; no GPU required
 cat results/metrics/drug_discovery_result.json   # expect accuracy = 0.9850586979722519
 ```
