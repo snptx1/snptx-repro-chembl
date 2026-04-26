@@ -134,12 +134,35 @@ def main() -> dict:
     summary_path.write_text(json.dumps(summary, indent=2))
 
     acc = metrics.get("accuracy")
+    expected = 0.9797225186766275
+    bit_equal = isinstance(acc, float) and acc == expected
+    close = isinstance(acc, float) and abs(acc - expected) < 1e-9
+
+    # ANSI colors (safe to print; most modern terminals render them)
+    GREEN = "\033[1;32m"
+    RED = "\033[1;31m"
+    YELLOW = "\033[1;33m"
+    DIM = "\033[2m"
+    RESET = "\033[0m"
+    if bit_equal:
+        verdict = f"{GREEN}\u2714 MATCH{RESET}  (bit-equal to expected)"
+    elif close:
+        verdict = f"{YELLOW}~ MATCH{RESET}  (within 1e-9 of expected)"
+    else:
+        delta = (acc - expected) if isinstance(acc, float) else float("nan")
+        verdict = f"{RED}\u2718 MISMATCH{RESET}  (delta = {delta:+.3e})"
+
+    bar = "=" * 68
     print()
-    print("=" * 64)
-    print(f" ChEMBL bioactivity GCN — accuracy = {acc!r}")
-    print(f" Expected (deterministic, seed=42): 0.9797225186766275")
-    print(f" Summary written to: {summary_path}")
-    print("=" * 64)
+    print(bar)
+    print(f" ChEMBL bioactivity GCN \u2014 reproducibility check")
+    print(bar)
+    print(f"   observed accuracy : {acc!r}")
+    print(f"   expected accuracy : {expected!r}")
+    print(f"   verdict           : {verdict}")
+    print(f"   {DIM}seed={SEED}, epochs={EPOCHS}, n_train={len(X_train)}, n_test={len(X_test)}{RESET}")
+    print(f"   {DIM}summary: {summary_path}{RESET}")
+    print(bar)
     return summary
 
 
