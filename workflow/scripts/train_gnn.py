@@ -21,7 +21,7 @@ import random
 import subprocess
 import sys
 import time
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 import numpy as np
@@ -362,7 +362,7 @@ def train_gnn(
         "validation_graphs": len(val_graphs),
         "duration_seconds": round(duration, 2),
         "device": str(device),
-        "timestamp": datetime.now(UTC).isoformat(),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
         "git_commit": _git_commit_hash(),
         "torch_version": torch.__version__,
     }

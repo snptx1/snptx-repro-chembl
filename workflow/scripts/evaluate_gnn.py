@@ -13,7 +13,7 @@ import os
 import random
 import sys
 import time
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 import numpy as np
@@ -142,7 +142,7 @@ def evaluate_gnn(
         "recall": float(recall_score(labels_np, preds_np, average="macro", zero_division=0)),  # type: ignore[reportArgumentType]
         "f1": float(f1_score(labels_np, preds_np, average="macro", zero_division=0)),  # type: ignore[reportArgumentType]
         "inference_seconds": round(inference_time, 3),
-        "timestamp": datetime.now(UTC).isoformat(),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
     }
 
     Path(output_metrics).parent.mkdir(parents=True, exist_ok=True)

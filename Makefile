@@ -6,7 +6,7 @@ help:
 	@echo "snptx-repro-chembl — public reproducibility artifact for the SNPTX ChEMBL GCN headline result"
 	@echo ""
 	@echo "Targets:"
-	@echo "  make install       Create .venv and install minimal CPU dependencies (~2-3 min, ~1 GB)"
+	@echo "  make install       Create .venv and install minimal CPU dependencies (~1 min, ~200 MB)"
 	@echo "  make repro-chembl  Train + evaluate the ChEMBL GCN baseline (~15s on CPU)"
 	@echo "  make test          Run GNN unit tests"
 	@echo "  make clean         Remove generated artifacts (results/, .pytest_cache/, __pycache__/)"

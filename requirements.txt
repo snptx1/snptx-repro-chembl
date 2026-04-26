@@ -1,7 +1,9 @@
 # Minimal CPU-only dependencies for snptx-repro-chembl.
-# Pinned to versions used in the reference run; CPU torch wheels are on
-# the standard PyPI index, so plain `pip install -r requirements.txt` works.
-torch==2.5.1
+# Pinned to versions used in the reference run. The +cpu local version
+# combined with PyTorch's CPU wheel index keeps the install ~200 MB
+# instead of pulling the ~2 GB CUDA build from PyPI.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.5.1+cpu
 torch_geometric==2.7.0
 numpy>=1.26,<3
 pandas>=2.0,<3

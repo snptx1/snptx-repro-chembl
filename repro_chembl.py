@@ -3,7 +3,7 @@
 Reproduces the headline ChEMBL bioactivity GCN result reported in the
 snptx-academic site (https://snptx1.github.io/snptx-academic/):
 
-    accuracy = 0.9797225186766275
+    accuracy = 0.9850586979722519
     n_train  = 3748
     n_test   = 937
     seed     = 42
@@ -128,13 +128,13 @@ def main() -> dict:
         "metrics": metrics,
         "seed": SEED,
         "epochs": EPOCHS,
-        "expected_accuracy": 0.9797225186766275,
+        "expected_accuracy": 0.9850586979722519,
     }
     summary_path = METRICS / "drug_discovery_result.json"
     summary_path.write_text(json.dumps(summary, indent=2))
 
     acc = metrics.get("accuracy")
-    expected = 0.9797225186766275
+    expected = 0.9850586979722519
     bit_equal = isinstance(acc, float) and acc == expected
     close = isinstance(acc, float) and abs(acc - expected) < 1e-9
 

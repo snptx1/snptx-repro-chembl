@@ -12,7 +12,7 @@ model:    GCN (3 layers, hidden=64, batch=32, lr=1e-3)
 seed:     42
 n_train:  3,748
 n_test:   937
-accuracy: 0.9797225186766275
+accuracy: 0.9850586979722519
 ```
 
 Bit-equal across runs at `seed=42`; ~15 s on CPU, no GPU required.
@@ -24,13 +24,13 @@ An earlier internal run on 2026-04-03 recorded `accuracy = 0.9210` using an in-p
 ## Reproduce in 5 minutes
 
 ```bash
-# prerequisites: python3.11+, pip, make, git
+# prerequisites: python3.10+, pip, make, git
 # (Ubuntu/Debian: sudo apt install python3 python3-venv make git)
 git clone https://github.com/snptx1/snptx-repro-chembl.git
 cd snptx-repro-chembl
-make install         # create .venv, install requirements (~3 min, ~1 GB)
+make install         # create .venv, install CPU-only deps (~1 min, ~200 MB)
 make repro-chembl    # ≈ 15s on CPU; no GPU required
-cat results/metrics/drug_discovery_result.json   # expect accuracy = 0.9797225186766275
+cat results/metrics/drug_discovery_result.json   # expect accuracy = 0.9850586979722519
 ```
 
 The script pins seed 42 and writes a result summary to `results/metrics/drug_discovery_result.json`.

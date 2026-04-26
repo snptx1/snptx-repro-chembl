@@ -18,7 +18,7 @@ import json
 import logging
 from abc import ABC, abstractmethod
 from dataclasses import asdict, dataclass, field
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 import numpy as np
@@ -218,7 +218,7 @@ class BaseAdapter(ABC):
             class_distribution={str(k): v for k, v in df[target_col].value_counts().items()},
             features=feature_cols,
             sha256=_sha256_df(df),
-            built_at=datetime.now(UTC).isoformat(),
+            built_at=datetime.now(timezone.utc).isoformat(),
             source_dir=str(self.raw_dir),
             adapter_class=type(self).__name__,
             modality=self.adapter_family,
